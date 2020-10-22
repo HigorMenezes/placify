@@ -3,8 +3,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const spotifyEnvironment = {
-  spotifyBaseUrl:
-    process.env.SPOTIFY_BASE_URL ?? "https://accounts.spotify.com",
+  spotifyBaseUrl: process.env.SPOTIFY_BASE_URL ?? "https://api.spotify.com/v1",
+  spotifyAccountsBaseUrl:
+    process.env.SPOTIFY_ACCOUNTS_BASE_URL ?? "https://accounts.spotify.com",
   spotifyClientId: process.env.SPOTIFY_CLIENT_ID ?? "",
   spotifyClientSecret: process.env.SPOTIFY_CLIENT_SECRET ?? "",
   spotifyReponseType: process.env.SPOTIFY_RESPONSE_TYPE ?? "code",
