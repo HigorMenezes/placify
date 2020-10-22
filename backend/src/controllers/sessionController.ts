@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import logger from "../utils/logger";
 import sessionBusiness from "../businesses/sessionBusiness";
 
 interface CallbackRequest extends Request {
@@ -44,7 +45,7 @@ const sessionController = {
         })
         .redirect(sessionBusiness.homePageUrl());
     } catch (error) {
-      console.error("Error:", error);
+      logger.error(error);
       return response.status(500).json({
         code: 500,
         message: "Internal Server Error",
