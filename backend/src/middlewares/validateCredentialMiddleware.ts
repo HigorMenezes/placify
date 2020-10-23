@@ -16,6 +16,7 @@ async function validateCredentialMiddleware(
   response: Response,
   next: NextFunction,
 ) {
+  logger.debug("[validateCredentialMiddleware]");
   try {
     const {
       refresh_token: refreshToken,
@@ -23,6 +24,10 @@ async function validateCredentialMiddleware(
     } = request.cookies;
 
     if (accessToken) {
+      logger.debug(
+        "[validateCredentialMiddleware]",
+        "there are accessToken, returning next()",
+      );
       return next();
     }
 
@@ -34,15 +39,21 @@ async function validateCredentialMiddleware(
         maxAge: newCredential.expires_in * 1000,
       });
 
+      logger.debug(
+        "[validateCredentialMiddleware]",
+        "refresh token:",
+        newCredential,
+      );
       return next();
     }
 
+    logger.debug("[validateCredentialMiddleware]", "returning Unauthorized");
     return response.status(401).json({
       code: 401,
       message: "Unauthorized",
     });
   } catch (error) {
-    logger.error(error);
+    logger.error("[validateCredentialMiddleware]", error);
     return response.status(500).json({
       code: 500,
       message: "Internal Server Error",

@@ -12,10 +12,13 @@ interface CallbackRequest extends Request {
 
 const sessionController = {
   async session(request: Request, response: Response) {
+    logger.debug("[sessionController.session]");
+
     try {
+      logger.debug("[sessionController.session]", "Redirecting response");
       return response.redirect(sessionBusiness.authorizationUrl());
     } catch (error) {
-      logger.error(error);
+      logger.error("[sessionController.session]", error);
       return response.status(500).json({
         code: 500,
         message: "Internal Server Error",
@@ -23,6 +26,8 @@ const sessionController = {
     }
   },
   async sessionCallback(request: CallbackRequest, response: Response) {
+    logger.debug("[sessionController.sessionCallback]");
+
     try {
       const { code, state, error } = request.query;
 
@@ -32,6 +37,7 @@ const sessionController = {
           state,
         })
       ) {
+        logger.debug("[sessionController.sessionCallback]", "Access denied");
         return response.status(400).json({
           code: 400,
           message: "Access denied",
@@ -42,6 +48,10 @@ const sessionController = {
         code,
       });
 
+      logger.debug(
+        "[sessionController.sessionCallback]",
+        "Redirect to home page with refresh_token and access_token in header",
+      );
       return response
         .cookie("refresh_token", credentialResponse.refresh_token, {
           httpOnly: true,
