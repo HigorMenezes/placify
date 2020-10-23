@@ -18,7 +18,7 @@ export const spotifyEnvironment = {
 
 export const appEnvironment = {
   appPort: process.env.APP_PORT ?? 3333,
-  appLogLevel: process.env.APP_LOG_LEVEL ?? "INFO",
+  appLogLevel: process.env.APP_LOG_LEVEL ?? "DEBUG",
   appClientUrl: process.env.APP_CLIENT_URL ?? "http://localhost:3000",
 };
 

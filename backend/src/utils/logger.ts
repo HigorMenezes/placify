@@ -1,6 +1,7 @@
 import { appEnvironment } from "../configs/environment";
 
 interface LogLevel {
+  DEBUG: number;
   INFO: number;
   WARN: number;
   ERROR: number;
@@ -8,9 +9,10 @@ interface LogLevel {
 }
 
 const logLevel: LogLevel = {
-  INFO: 1,
-  WARN: 2,
-  ERROR: 3,
+  DEBUG: 1,
+  INFO: 2,
+  WARN: 3,
+  ERROR: 4,
 };
 
 const fontColors = {
@@ -25,6 +27,11 @@ const fontColors = {
 };
 
 const logger = {
+  debug(...message: any[]) {
+    if (logLevel.DEBUG >= logLevel[appEnvironment.appLogLevel]) {
+      console.info(fontColors.cyan, "debug\t", fontColors.white, ...message);
+    }
+  },
   info(...message: any[]) {
     if (logLevel.INFO >= logLevel[appEnvironment.appLogLevel]) {
       console.info(fontColors.blue, "info \t", fontColors.white, ...message);
