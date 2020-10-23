@@ -13,7 +13,6 @@ export const spotifyEnvironment = {
   spotifyState: process.env.SPOTIFY_STATE ?? "statemessage",
   spotifyScope:
     process.env.SPOTIFY_SCOPE ?? "user-read-private user-read-email",
-  spotifyGrantType: process.env.SPOTIFY_GRANT_TYPE ?? "authorization_code",
   spotifyRedirectHomePage: process.env.SPOTIFY_REDIRECT_HOME_PAGE ?? "",
 };
 

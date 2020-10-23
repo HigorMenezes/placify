@@ -1,13 +1,23 @@
 import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 import logger from "./utils/logger";
 import { appEnvironment } from "./configs/environment";
 
+import validateCredentialMiddleware from "./middlewares/validateCredentialMiddleware";
 import sessionRoutes from "./routes/sessionRoutes";
 
 const app = express();
+app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 app.use(express.json());
+app.use(cookieParser());
 
 app.use(sessionRoutes);
+app.use(validateCredentialMiddleware);
+
+app.get("/test", (request, response) => {
+  response.json({ test: "OK" });
+});
 
 app.listen(appEnvironment.appPort, () => {
   logger.info(`Server is running at port ${appEnvironment.appPort}`);

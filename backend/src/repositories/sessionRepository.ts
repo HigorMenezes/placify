@@ -21,13 +21,28 @@ const sessionRepository = {
     params: URLSearchParams;
     configs: AxiosRequestConfig;
   }) {
-    const { data: credentials } = await spotifyAccountsApi.post<Credential>(
+    const { data: credential } = await spotifyAccountsApi.post<Credential>(
       `api/token`,
       params,
       configs,
     );
 
-    return credentials;
+    return credential;
+  },
+  async requestForSpotifyRefreshCredential({
+    params,
+    configs,
+  }: {
+    params: URLSearchParams;
+    configs: AxiosRequestConfig;
+  }) {
+    const { data: newCredential } = await spotifyAccountsApi.post<Credential>(
+      `api/token`,
+      params,
+      configs,
+    );
+
+    return newCredential;
   },
 };
 

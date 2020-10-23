@@ -12,7 +12,15 @@ interface CallbackRequest extends Request {
 
 const sessionController = {
   async session(request: Request, response: Response) {
-    response.redirect(sessionBusiness.authorizationUrl());
+    try {
+      return response.redirect(sessionBusiness.authorizationUrl());
+    } catch (error) {
+      logger.error(error);
+      return response.status(500).json({
+        code: 500,
+        message: "Internal Server Error",
+      });
+    }
   },
   async sessionCallback(request: CallbackRequest, response: Response) {
     try {
@@ -30,7 +38,7 @@ const sessionController = {
         });
       }
 
-      const credentialResponse = await sessionBusiness.requestForCredentials({
+      const credentialResponse = await sessionBusiness.requestForCredential({
         code,
       });
 
@@ -39,9 +47,7 @@ const sessionController = {
           httpOnly: true,
         })
         .cookie("access_token", credentialResponse.access_token, {
-          expires: new Date(
-            new Date().getTime() + credentialResponse.expires_in * 1000,
-          ),
+          maxAge: credentialResponse.expires_in * 1000,
         })
         .redirect(sessionBusiness.homePageUrl());
     } catch (error) {

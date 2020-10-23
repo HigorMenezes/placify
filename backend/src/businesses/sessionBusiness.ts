@@ -29,14 +29,6 @@ const sessionBusiness = {
       `${spotifyEnvironment.spotifyClientId}:${spotifyEnvironment.spotifyClientSecret}`,
     ).toString("base64");
   },
-  credentialRequestParams({ code }: { code?: string }) {
-    const params = new URLSearchParams();
-    params.append("grant_type", spotifyEnvironment.spotifyGrantType);
-    params.append("code", code ?? "");
-    params.append("redirect_uri", spotifyEnvironment.spotifyRedirectUri);
-
-    return params;
-  },
   homePageUrl() {
     return spotifyEnvironment.spotifyRedirectHomePage;
   },
@@ -50,16 +42,36 @@ const sessionBusiness = {
 
     return credentialConfigs;
   },
-  async requestForCredentials({ code }: { code?: string }) {
-    const params = this.credentialRequestParams({ code });
+  async requestForCredential({ code }: { code?: string }) {
     const configs = this.credentialRequestConfigs();
 
-    const credentials = await sessionRepository.requestForSpotifyCredential({
+    const params = new URLSearchParams();
+    params.append("grant_type", "authorization_code");
+    params.append("code", code ?? "");
+    params.append("redirect_uri", spotifyEnvironment.spotifyRedirectUri);
+
+    const credential = await sessionRepository.requestForSpotifyCredential({
       params,
       configs,
     });
 
-    return credentials;
+    return credential;
+  },
+  async refreshCredential({ refreshToken }: { refreshToken: string }) {
+    const configs = this.credentialRequestConfigs();
+
+    const params = new URLSearchParams();
+    params.append("grant_type", "refresh_token");
+    params.append("refresh_token", refreshToken);
+
+    const newCredential = await sessionRepository.requestForSpotifyRefreshCredential(
+      {
+        params,
+        configs,
+      },
+    );
+
+    return newCredential;
   },
 };
 
