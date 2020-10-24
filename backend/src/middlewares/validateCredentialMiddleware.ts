@@ -35,6 +35,8 @@ async function validateCredentialMiddleware(
       const newCredential = await sessionBusiness.refreshCredential({
         refreshToken,
       });
+
+      request.cookies.access_token = newCredential.access_token;
       response.cookie("access_token", newCredential.access_token, {
         maxAge: newCredential.expires_in * 1000,
       });
