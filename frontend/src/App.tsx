@@ -3,6 +3,7 @@ import { ThemeProvider } from "@material-ui/styles";
 
 import Routes from "./Routes";
 
+import "./styles/reset.css";
 import theme, { Theme } from "./styles/theme";
 
 function App(): React.ReactElement {
