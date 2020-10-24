@@ -2,7 +2,7 @@ import React from "react";
 
 import PlacifyLogo from "../../components/PlacifyLogo";
 import PlacifyTitle from "../../components/PlacifyTitle";
-import GradientButton from "../../components/GradientButton";
+import GradientAnchor from "../../components/GradientAnchor";
 
 import useLoginPageStyles from "./useLoginPageStyles";
 
@@ -18,7 +18,9 @@ function LoginPage(): React.ReactElement {
         </div>
         <div className={classes.signInContainer}>
           <p className={classes.signInText}>Wellcome to Placify</p>
-          <GradientButton>Sign in with spotify</GradientButton>
+          <GradientAnchor href="http://localhost:3333/session">
+            Sign in with spotify
+          </GradientAnchor>
         </div>
       </div>
     </div>

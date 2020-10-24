@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Theme } from "../../styles/theme";
 
-const useGradientButtonStyles = makeStyles<Theme>((theme) => ({
+const useGradientAnchorStyles = makeStyles<Theme>((theme) => ({
   root: {
     boxShadow: "1px 2px 5px rgba(0, 0, 0, 0.25)",
     borderRadius: 10,
@@ -11,6 +11,10 @@ const useGradientButtonStyles = makeStyles<Theme>((theme) => ({
     height: 40,
     border: "none",
     cursor: "pointer",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
 
     fontSize: 16,
     fontWeight: 600,
@@ -24,4 +28,4 @@ const useGradientButtonStyles = makeStyles<Theme>((theme) => ({
   },
 }));
 
-export default useGradientButtonStyles;
+export default useGradientAnchorStyles;
