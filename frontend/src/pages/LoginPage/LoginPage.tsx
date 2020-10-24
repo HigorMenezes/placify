@@ -1,4 +1,5 @@
 import React from "react";
+import { FaSpotify } from "react-icons/fa";
 
 import PlacifyLogo from "../../components/PlacifyLogo";
 import PlacifyTitle from "../../components/PlacifyTitle";
@@ -19,7 +20,8 @@ function LoginPage(): React.ReactElement {
         <div className={classes.signInContainer}>
           <p className={classes.signInText}>Wellcome to Placify</p>
           <GradientAnchor href="http://localhost:3333/session">
-            Sign in with spotify
+            <FaSpotify size={22} />
+            &nbsp; Sign in with spotify
           </GradientAnchor>
         </div>
       </div>
