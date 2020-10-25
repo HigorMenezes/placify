@@ -27,6 +27,9 @@ const useLoginPageStyles = makeStyles<Theme>((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    "& > *:not(:last-child)": {
+      marginBottom: 15,
+    },
   },
   signInContainer: {
     display: "flex",
