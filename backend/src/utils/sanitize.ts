@@ -1,8 +1,10 @@
 import {
   Album,
+  Playlist,
   ExternalUrls,
   Artist,
   Followers,
+  Tracks,
   Images,
   Pagination,
   Profile,
@@ -16,6 +18,10 @@ export function sanitizeFollowers(followers: Followers) {
   return followers.total;
 }
 
+export function sanitizeTracks(tracks: Tracks) {
+  return tracks.total;
+}
+
 export function sanitizeImage(image: Images) {
   return {
     url: image.url,
@@ -26,7 +32,7 @@ export function sanitizeImage(image: Images) {
 
 export function sanitizePagination(pagination: Pagination) {
   return {
-    limit: pagination.total,
+    limit: pagination.limit,
     next: !!pagination.next,
     offset: pagination.offset,
     previous: !!pagination.previous,
@@ -62,5 +68,16 @@ export function sanitizeAlbum(album: Album) {
     name: album.name,
     releaseDate: album.release_date,
     totalTracks: album.total_tracks,
+  };
+}
+
+export function sanitizePlaylist(playlist: Playlist) {
+  return {
+    description: playlist.description,
+    spotifyUrl: sanitizeExternalUrl(playlist.external_urls),
+    id: playlist.id,
+    images: playlist.images.map((image) => sanitizeImage(image)),
+    name: playlist.name,
+    tracks: sanitizeTracks(playlist.tracks),
   };
 }

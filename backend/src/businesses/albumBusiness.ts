@@ -23,7 +23,7 @@ const albumBusiness = {
 
     const sanitizedAlbums = {
       ...sanitizePagination(newAlbums),
-      items: newAlbums.items.map((album: Album) => sanitizeAlbum(album)),
+      albums: newAlbums.items.map((album: Album) => sanitizeAlbum(album)),
     };
 
     return sanitizedAlbums;

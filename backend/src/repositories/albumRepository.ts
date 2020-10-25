@@ -10,7 +10,7 @@ interface NewAlbums {
 
 const albumRepository = {
   async newAlbums({ token, country, limit, offset }: NewAlbums) {
-    logger.debug("[albumRepository.profile]");
+    logger.debug("[albumRepository.newAlbums]");
 
     const params = new URLSearchParams();
     if (country) {

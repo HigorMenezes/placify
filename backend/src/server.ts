@@ -8,6 +8,7 @@ import validateCredentialMiddleware from "./middlewares/validateCredentialMiddle
 import sessionRoutes from "./routes/sessionRoutes";
 import userRoutes from "./routes/userRoutes";
 import albumRoutes from "./routes/albumRoutes";
+import playlistRoutes from "./routes/playlistRoutes";
 
 const app = express();
 app.use(cors({ origin: appEnvironment.appClientUrl, credentials: true }));
@@ -18,6 +19,7 @@ app.use(sessionRoutes);
 app.use(validateCredentialMiddleware);
 app.use(userRoutes);
 app.use(albumRoutes);
+app.use(playlistRoutes);
 
 app.get("/test", (request, response) => {
   response.json({ test: "OK" });

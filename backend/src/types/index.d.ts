@@ -15,6 +15,11 @@ export interface Images {
   url: string;
 }
 
+export interface Tracks {
+  href: string;
+  total: number;
+}
+
 export interface Pagination {
   limit: number;
   next?: string;
@@ -46,4 +51,13 @@ export interface Album {
   name: string;
   release_date: string;
   total_tracks: number;
+}
+
+export interface Playlist {
+  description: string;
+  external_urls: ExternalUrls;
+  id: string;
+  images: Images[];
+  name: string;
+  tracks: Tracks;
 }
