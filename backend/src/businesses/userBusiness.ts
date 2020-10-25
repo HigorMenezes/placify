@@ -6,8 +6,17 @@ const userBusiness = {
     logger.debug("[userBusiness.profile]");
     const profile = await userRepository.profile({ token });
 
-    logger.debug("[userBusiness.profile]", "returning:", profile);
-    return profile;
+    const sanitizedProfile = {
+      id: profile.id ?? 0,
+      name: profile?.display_name ?? "",
+      email: profile?.email ?? "",
+      followers: profile?.followers?.total ?? 0,
+      spotifyUrl: profile?.external_urls?.spotify ?? "",
+      images: profile?.images,
+    };
+
+    logger.debug("[userBusiness.profile]", "returning:", sanitizedProfile);
+    return sanitizedProfile;
   },
 };
 
