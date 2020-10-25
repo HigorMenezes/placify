@@ -24,10 +24,6 @@ async function validateCredentialMiddleware(
     } = request.cookies;
 
     if (accessToken) {
-      logger.debug(
-        "[validateCredentialMiddleware]",
-        "there are accessToken, returning next()",
-      );
       return next();
     }
 
@@ -41,15 +37,9 @@ async function validateCredentialMiddleware(
         maxAge: newCredential.expires_in * 1000,
       });
 
-      logger.debug(
-        "[validateCredentialMiddleware]",
-        "refresh token:",
-        newCredential,
-      );
       return next();
     }
 
-    logger.debug("[validateCredentialMiddleware]", "returning Unauthorized");
     return response.status(401).json({
       code: 401,
       message: "Unauthorized",

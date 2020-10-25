@@ -15,7 +15,6 @@ const userBusiness = {
       images: profile?.images,
     };
 
-    logger.debug("[userBusiness.profile]", "returning:", sanitizedProfile);
     return sanitizedProfile;
   },
 };

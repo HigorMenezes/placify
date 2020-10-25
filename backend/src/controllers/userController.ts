@@ -10,7 +10,6 @@ const userController = {
       const { access_token: accessToken } = request.cookies;
       const profile = await userBusiness.profile({ token: accessToken });
 
-      logger.debug("[userController.profile]", "return", profile);
       return response.json(profile);
     } catch (error) {
       logger.error("[userController.profile]", error);

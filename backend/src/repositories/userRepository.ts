@@ -8,7 +8,6 @@ const userRepository = {
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    logger.debug("[userRepository.profile]", "returning:", profile);
     return profile;
   },
 };

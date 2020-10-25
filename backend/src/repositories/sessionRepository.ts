@@ -30,11 +30,6 @@ const sessionRepository = {
       configs,
     );
 
-    logger.debug(
-      "[sessionRepository.requestForSpotifyCredential]",
-      "returning:",
-      credential,
-    );
     return credential;
   },
   async requestForSpotifyRefreshCredential({
@@ -51,11 +46,6 @@ const sessionRepository = {
       configs,
     );
 
-    logger.debug(
-      "[sessionRepository.requestForSpotifyRefreshCredential]",
-      "returning",
-      newCredential,
-    );
     return newCredential;
   },
 };
