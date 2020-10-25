@@ -1,4 +1,5 @@
 import userRepository from "../repositories/userRepository";
+import { sanitizeProfile } from "../utils/sanitize";
 import logger from "../utils/logger";
 
 const userBusiness = {
@@ -6,14 +7,7 @@ const userBusiness = {
     logger.debug("[userBusiness.profile]");
     const profile = await userRepository.profile({ token });
 
-    const sanitizedProfile = {
-      id: profile.id ?? 0,
-      name: profile?.display_name ?? "",
-      email: profile?.email ?? "",
-      followers: profile?.followers?.total ?? 0,
-      spotifyUrl: profile?.external_urls?.spotify ?? "",
-      images: profile?.images,
-    };
+    const sanitizedProfile = sanitizeProfile(profile);
 
     return sanitizedProfile;
   },
