@@ -9,8 +9,8 @@ interface FeaturedPlaylists {
   locale?: string;
   country?: string;
   timestamp?: string;
-  limit?: number;
-  offset?: number;
+  limit?: string;
+  offset?: string;
 }
 
 const playlistBusiness = {
@@ -19,8 +19,8 @@ const playlistBusiness = {
     locale = "",
     country = "",
     timestamp = "",
-    limit = 5,
-    offset = 0,
+    limit,
+    offset,
   }: FeaturedPlaylists) {
     logger.debug("[playlistBusiness.featuredPlaylists]");
     const featuredPlaylists = await playlistRepository.featuredPlaylists({
@@ -28,8 +28,8 @@ const playlistBusiness = {
       locale,
       country,
       timestamp,
-      limit,
-      offset,
+      limit: limit ? Number(limit) : 5,
+      offset: offset ? Number(offset) : 0,
     });
 
     const sanitizedFeaturedPlaylists = {

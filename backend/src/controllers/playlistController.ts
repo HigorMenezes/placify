@@ -2,24 +2,23 @@ import { Request, Response } from "express";
 import playlistBusiness from "../businesses/playlistBusiness";
 import logger from "../utils/logger";
 
-interface FeaturedPlaylistParams {
-  locale?: string;
-  country?: string;
-  timestamp?: string;
-  limit?: number;
-  offset?: number;
+interface FeaturedPlaylistRequest extends Request {
+  query: {
+    locale?: string;
+    country?: string;
+    timestamp?: string;
+    limit?: string;
+    offset?: string;
+  };
 }
 
 const playlistController = {
-  async featuredPlaylist(
-    request: Request<FeaturedPlaylistParams>,
-    response: Response,
-  ) {
+  async featuredPlaylist(request: FeaturedPlaylistRequest, response: Response) {
     logger.debug("[playlistController.featuredPlaylist]");
 
     try {
       const { access_token: accessToken } = request.cookies;
-      const { locale, country, timestamp, limit, offset } = request.params;
+      const { locale, country, timestamp, limit, offset } = request.query;
 
       const featuredPlaylist = await playlistBusiness.featuredPlaylists({
         token: accessToken,

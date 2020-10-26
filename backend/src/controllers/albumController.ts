@@ -2,19 +2,21 @@ import { Request, Response } from "express";
 import albumBusiness from "../businesses/albumBusiness";
 import logger from "../utils/logger";
 
-interface NewAlbumsParams {
-  country?: string;
-  limit?: number;
-  offset?: number;
+interface NewAlbumsRequest extends Request {
+  query: {
+    country?: string;
+    limit?: string;
+    offset?: string;
+  };
 }
 
 const albumController = {
-  async newAlbums(request: Request<NewAlbumsParams>, response: Response) {
+  async newAlbums(request: NewAlbumsRequest, response: Response) {
     logger.debug("[albumController.newAlbums]");
 
     try {
       const { access_token: accessToken } = request.cookies;
-      const { country, limit, offset } = request.params;
+      const { country, limit, offset } = request.query;
 
       const newAlbums = await albumBusiness.newAlbums({
         token: accessToken,
