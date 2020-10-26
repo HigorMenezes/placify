@@ -16,7 +16,9 @@ function MainLayout({ children }: MainLayoutProps): React.ReactElement {
       <aside className={classes.sidebarContainer}>
         <Sidebar />
       </aside>
-      <main className={classes.mainContainer}>{children}</main>
+      <div className={classes.mainContainer}>
+        <main className={classes.mainContent}>{children}</main>
+      </div>
     </div>
   );
 }

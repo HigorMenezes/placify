@@ -39,7 +39,7 @@ const useLoginPageStyles = makeStyles<Theme>((theme) => ({
   },
   signInText: {
     fontSize: 16,
-    color: "#A5A5A5",
+    color: theme.subTextColor,
     margin: 8,
   },
 }));

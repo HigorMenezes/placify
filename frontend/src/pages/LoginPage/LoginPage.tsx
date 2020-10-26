@@ -18,7 +18,7 @@ function LoginPage(): React.ReactElement {
           <PlacifyTitle />
         </div>
         <div className={classes.signInContainer}>
-          <p className={classes.signInText}>Wellcome to Placify</p>
+          <p className={classes.signInText}>Welcome to Placify</p>
           <GradientAnchor href="http://localhost:3333/session">
             <FaSpotify size={22} />
             &nbsp; Sign in with spotify

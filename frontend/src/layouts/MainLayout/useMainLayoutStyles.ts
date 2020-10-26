@@ -17,9 +17,15 @@ const useMainLayoutStyles = makeStyles<Theme>((theme) => ({
   },
   mainContainer: {
     width: "100%",
-    height: "100%",
-
+    display: "flex",
+    justifyContent: "center",
     overflowY: "auto",
+  },
+  mainContent: {
+    width: "100%",
+    maxWidth: 1100,
+    height: "100%",
+    padding: 15,
   },
 }));
 

@@ -17,8 +17,8 @@ const useGradientAnchorStyles = makeStyles<Theme>((theme) => ({
     justifyContent: "center",
 
     fontSize: 16,
-    fontWeight: 600,
-    color: "#FFFFFF",
+    fontWeight: theme.fontWeight.semiBold,
+    color: theme.PrimaryColor.contrastColor,
 
     transition: "filter .2s",
 
