@@ -3,15 +3,28 @@ import { makeStyles } from "@material-ui/styles";
 import { Theme } from "../../styles/theme";
 
 const useHomePageStyles = makeStyles<Theme>((theme) => ({
-  welcomeContainer: {
+  headerContainer: {
     width: "100%",
     height: 50,
     margin: "15px 0px",
+
+    display: "flex",
+    justifyContent: "flex-end",
   },
-  welcomeText: {
-    fontSize: 36,
-    fontWeight: theme.fontWeight.regular,
-    color: theme.subTextColor,
+  userContainer: {
+    display: "flex",
+    alignItems: "center",
+    "& > *:not(:last-child)": {
+      marginRight: 10,
+    },
+  },
+  userName: {
+    fontSize: 18,
+    color: theme.textColor,
+    fontWeight: theme.fontWeight.semiBold,
+  },
+  userImage: {
+    borderRadius: "50%",
   },
   newAlbumsContainer: {
     width: "100%",

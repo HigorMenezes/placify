@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { FaAngleDown } from "react-icons/fa";
 import placifyApi from "../../services/placifyApi";
 
 import MainLayout from "../../layouts/MainLayout";
+
+import userAlt from "../../assets/user-alt.svg";
 
 import useHomePageStyles from "./useHomePageStyles";
 
@@ -35,9 +38,19 @@ interface NewAlbums {
   total: number;
 }
 
+export interface Profile {
+  id: string;
+  name: string;
+  email: string;
+  followers: number;
+  spotifyUrl: string;
+  images?: Image[];
+}
+
 function HomePage(): React.ReactElement {
   const classes = useHomePageStyles();
   const [newAlbums, setNewAlbums] = useState<NewAlbums>();
+  const [userProfile, setUserProfile] = useState<Profile>();
 
   useEffect(() => {
     placifyApi.get("/albums/new", { params: { limit: 4 } }).then(({ data }) => {
@@ -45,14 +58,30 @@ function HomePage(): React.ReactElement {
     });
   }, []);
 
-  if (!newAlbums) {
+  useEffect(() => {
+    placifyApi.get("/users/profile").then(({ data }) => {
+      setUserProfile(data);
+    });
+  }, []);
+
+  if (!newAlbums || !userProfile) {
     return <p>loading...</p>;
   }
 
   return (
     <MainLayout>
-      <div className={classes.welcomeContainer}>
-        <p className={classes.welcomeText}>Welcome Higor!</p>
+      <div className={classes.headerContainer}>
+        <div className={classes.userContainer}>
+          <img
+            className={classes.userImage}
+            src={userProfile.images?.[0]?.url ?? userAlt}
+            width={25}
+            height={25}
+            alt="user profile"
+          />
+          <p className={classes.userName}>{userProfile.name}</p>
+          <FaAngleDown size={16} />
+        </div>
       </div>
 
       <div className={classes.newAlbumsContainer}>

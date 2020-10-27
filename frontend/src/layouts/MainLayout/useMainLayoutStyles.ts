@@ -14,6 +14,7 @@ const useMainLayoutStyles = makeStyles<Theme>((theme) => ({
   sidebarContainer: {
     width: 350,
     height: "100%",
+    padding: 15,
   },
   mainContainer: {
     width: "100%",
