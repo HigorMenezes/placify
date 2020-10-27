@@ -26,25 +26,6 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
     columnGap: 15,
     height: "100%",
   },
-  newAlbumContentItem: {},
-  newAlbumContentItemImage: {
-    borderRadius: 15,
-  },
-  newAlbumContentItemName: {
-    margin: "0 5px",
-    marginTop: 5,
-    fontSize: 16,
-    fontWeight: theme.fontWeight.semiBold,
-    lineHeight: 1,
-    color: theme.textColor,
-    textTransform: "capitalize",
-  },
-  newAlbumContentItemArtist: {
-    margin: "0 5px",
-    fontSize: 14,
-    fontWeight: theme.fontWeight.regular,
-    color: theme.subTextColor,
-  },
 }));
 
 export default useHomePageStyles;
