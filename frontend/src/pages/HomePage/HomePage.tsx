@@ -15,7 +15,6 @@ function HomePage(): React.ReactElement {
       <div className={classes.headerContainer}>
         <UserProfileButton />
       </div>
-
       <div className={classes.newAlbumsContainer}>
         <h2 className={classes.newAlbumsContainerTitle}>New Albums</h2>
         <NewAlbumsList />

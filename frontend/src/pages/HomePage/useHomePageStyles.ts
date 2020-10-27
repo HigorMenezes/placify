@@ -20,12 +20,6 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
     fontWeight: theme.fontWeight.bold,
     color: theme.textColor,
   },
-  newAlbumContent: {
-    display: "grid",
-    gridTemplateColumns: "repeat(4, 1fr)",
-    columnGap: 15,
-    height: "100%",
-  },
 }));
 
 export default useHomePageStyles;
