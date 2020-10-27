@@ -11,21 +11,6 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
-  userContainer: {
-    display: "flex",
-    alignItems: "center",
-    "& > *:not(:last-child)": {
-      marginRight: 10,
-    },
-  },
-  userName: {
-    fontSize: 22,
-    color: theme.textColor,
-    fontWeight: theme.fontWeight.semiBold,
-  },
-  userImage: {
-    borderRadius: "50%",
-  },
   newAlbumsContainer: {
     width: "100%",
   },
