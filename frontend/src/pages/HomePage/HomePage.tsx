@@ -1,19 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { FaAngleDown } from "react-icons/fa";
 import placifyApi from "../../services/placifyApi";
+
+import UserProfileButton from "../../components/UserProfileButton";
 
 import MainLayout from "../../layouts/MainLayout";
 
-import userAlt from "../../assets/user-alt.svg";
-
 import useHomePageStyles from "./useHomePageStyles";
 
-import { NewAlbums, Profile } from "../../types";
+import { NewAlbums } from "../../types";
 
 function HomePage(): React.ReactElement {
   const classes = useHomePageStyles();
   const [newAlbums, setNewAlbums] = useState<NewAlbums>();
-  const [userProfile, setUserProfile] = useState<Profile>();
 
   useEffect(() => {
     placifyApi.get("/albums/new", { params: { limit: 4 } }).then(({ data }) => {
@@ -21,30 +19,14 @@ function HomePage(): React.ReactElement {
     });
   }, []);
 
-  useEffect(() => {
-    placifyApi.get("/users/profile").then(({ data }) => {
-      setUserProfile(data);
-    });
-  }, []);
-
-  if (!newAlbums || !userProfile) {
+  if (!newAlbums) {
     return <p>loading...</p>;
   }
 
   return (
     <MainLayout>
       <div className={classes.headerContainer}>
-        <div className={classes.userContainer}>
-          <img
-            className={classes.userImage}
-            src={userProfile.images?.[0]?.url ?? userAlt}
-            width={25}
-            height={25}
-            alt="user profile"
-          />
-          <p className={classes.userName}>{userProfile.name}</p>
-          <FaAngleDown size={16} />
-        </div>
+        <UserProfileButton />
       </div>
 
       <div className={classes.newAlbumsContainer}>

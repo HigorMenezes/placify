@@ -19,7 +19,7 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
     },
   },
   userName: {
-    fontSize: 18,
+    fontSize: 22,
     color: theme.textColor,
     fontWeight: theme.fontWeight.semiBold,
   },
