@@ -8,6 +8,7 @@ import MainLayout from "../../layouts/MainLayout";
 import useHomePageStyles from "./useHomePageStyles";
 
 import { NewAlbums } from "../../types";
+import AlbumCard from "../../components/AlbumCard";
 
 function HomePage(): React.ReactElement {
   const classes = useHomePageStyles();
@@ -33,18 +34,7 @@ function HomePage(): React.ReactElement {
         <h2 className={classes.newAlbumsContainerTitle}>New Albums</h2>
         <div className={classes.newAlbumContent}>
           {newAlbums.albums.map((album) => (
-            <div key={album.id} className={classes.newAlbumContentItem}>
-              <img
-                className={classes.newAlbumContentItemImage}
-                src={album.images[0].url}
-                alt={album.name}
-                width="100%"
-              />
-              <h3 className={classes.newAlbumContentItemName}>{album.name}</h3>
-              <p className={classes.newAlbumContentItemArtist}>
-                {album.artists.map((artist) => artist.name).join(", ")}
-              </p>
-            </div>
+            <AlbumCard key={album.id} album={album} />
           ))}
         </div>
       </div>
