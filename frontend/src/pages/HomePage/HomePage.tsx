@@ -8,44 +8,7 @@ import userAlt from "../../assets/user-alt.svg";
 
 import useHomePageStyles from "./useHomePageStyles";
 
-interface Artist {
-  id: string;
-  name: string;
-  spotifyUrl: string;
-}
-
-interface Image {
-  height?: number;
-  url: string;
-  width?: number;
-}
-
-interface Album {
-  artists: Artist[];
-  id: string;
-  images: Image[];
-  name: string;
-  releaseDate: string;
-  spotifyUrl: string;
-  totalTracks: number;
-}
-interface NewAlbums {
-  albums: Album[];
-  limit: number;
-  next: boolean;
-  offset: number;
-  previous: boolean;
-  total: number;
-}
-
-export interface Profile {
-  id: string;
-  name: string;
-  email: string;
-  followers: number;
-  spotifyUrl: string;
-  images?: Image[];
-}
+import { NewAlbums, Profile } from "../../types";
 
 function HomePage(): React.ReactElement {
   const classes = useHomePageStyles();
