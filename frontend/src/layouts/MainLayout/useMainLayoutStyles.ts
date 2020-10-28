@@ -24,9 +24,9 @@ const useMainLayoutStyles = makeStyles<Theme>((theme) => ({
   },
   mainContent: {
     width: "100%",
+    height: "fit-content",
     maxWidth: 1100,
-    height: "100%",
-    padding: 15,
+    margin: 15,
   },
 }));
 
