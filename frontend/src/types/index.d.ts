@@ -19,8 +19,26 @@ export interface Album {
   spotifyUrl: string;
   totalTracks: number;
 }
+
+export interface Playlist {
+  description: string;
+  id: string;
+  images: Image[];
+  name: string;
+  spotifyUrl: string;
+  tracks: number;
+}
 export interface NewAlbums {
   albums: Album[];
+  limit: number;
+  next: boolean;
+  offset: number;
+  previous: boolean;
+  total: number;
+}
+
+export interface FeaturedPlaylists {
+  playlists: Playlist[];
   limit: number;
   next: boolean;
   offset: number;

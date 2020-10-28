@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/styles";
 
-const useHomePageStyles = makeStyles({
+const useNewAlbumsListStyles = makeStyles({
   root: {
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
@@ -9,4 +9,4 @@ const useHomePageStyles = makeStyles({
   },
 });
 
-export default useHomePageStyles;
+export default useNewAlbumsListStyles;

@@ -11,10 +11,10 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
-  newAlbumsContainer: {
+  sectionContent: {
     width: "100%",
   },
-  newAlbumsContainerTitle: {
+  title: {
     margin: "10px 5px",
     fontSize: 28,
     fontWeight: theme.fontWeight.bold,

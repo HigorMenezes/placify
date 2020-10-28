@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/styles";
 
 import { Theme } from "../../styles/theme";
 
-const useAlbumCardStyles = makeStyles<Theme>((theme) => ({
+const usePlaylistCardStyles = makeStyles<Theme>((theme) => ({
   root: {},
   cardImage: {
     borderRadius: 15,
@@ -16,12 +16,6 @@ const useAlbumCardStyles = makeStyles<Theme>((theme) => ({
     color: theme.textColor,
     textTransform: "capitalize",
   },
-  cardArtists: {
-    margin: "0 5px",
-    fontSize: 14,
-    fontWeight: theme.fontWeight.regular,
-    color: theme.subTextColor,
-  },
 }));
 
-export default useAlbumCardStyles;
+export default usePlaylistCardStyles;
