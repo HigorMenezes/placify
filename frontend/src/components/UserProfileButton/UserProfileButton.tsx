@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import placifyApi from "../../services/placifyApi";
 
+import Popover from "../Popover";
+
 import userAlt from "../../assets/user-alt.svg";
 
 import useUserProfileButtonStyles from "./useUserProfileButtonStyles";
@@ -10,6 +12,9 @@ import { Profile } from "../../types";
 
 function UserProfileButton(): React.ReactElement {
   const classes = useUserProfileButtonStyles();
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null,
+  );
   const [userProfile, setUserProfile] = useState<Profile>();
 
   useEffect(() => {
@@ -18,22 +23,37 @@ function UserProfileButton(): React.ReactElement {
     });
   }, []);
 
+  function handleClosePopover() {
+    setAnchorEl(null);
+  }
+
   if (!userProfile) {
     return <p>Loading...</p>;
   }
 
   return (
-    <button type="button" className={classes.root}>
-      <img
-        className={classes.userImage}
-        src={userProfile.images?.[0]?.url ?? userAlt}
-        width={30}
-        height={30}
-        alt="user profile"
-      />
-      <p className={classes.userName}>{userProfile.name}</p>
-      <FaAngleDown size={16} />
-    </button>
+    <>
+      <button
+        type="button"
+        className={classes.root}
+        onClick={(e) => {
+          setAnchorEl(e.currentTarget);
+        }}
+      >
+        <img
+          className={classes.userImage}
+          src={userProfile.images?.[0]?.url ?? userAlt}
+          width={30}
+          height={30}
+          alt="user profile"
+        />
+        <p className={classes.userName}>{userProfile.name}</p>
+        <FaAngleDown size={16} />
+      </button>
+      <Popover anchorEl={anchorEl} onClose={handleClosePopover}>
+        <div>Hello popover</div>
+      </Popover>
+    </>
   );
 }
 
