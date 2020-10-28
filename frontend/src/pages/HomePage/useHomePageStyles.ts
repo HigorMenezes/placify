@@ -18,8 +18,8 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
   title: {
     margin: "10px 5px",
     fontSize: 28,
-    fontWeight: theme.fontWeight.bold,
-    color: theme.textColor,
+    fontWeight: theme.fontWeight.semiBold,
+    color: theme.subTextColor,
   },
 }));
 
