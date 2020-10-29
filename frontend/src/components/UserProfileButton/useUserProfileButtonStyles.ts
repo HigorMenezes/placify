@@ -5,14 +5,17 @@ const useHomePageStyles = makeStyles({
     display: "flex",
     alignItems: "center",
     border: "none",
-
+    borderRadius: 10,
+    backgroundColor: "transparent",
     cursor: "pointer",
 
     "& > *:not(:last-child)": {
       marginRight: 10,
     },
 
-    backgroundColor: "transparent",
+    "&:hover, &:active, &:focus": {
+      backgroundColor: "rgba(0,0,0,.1)",
+    },
   },
   userImage: {
     borderRadius: "50%",
