@@ -1,8 +1,6 @@
 import { makeStyles } from "@material-ui/styles";
 
-import { Theme } from "../../styles/theme";
-
-const useHomePageStyles = makeStyles<Theme>((theme) => ({
+const useHomePageStyles = makeStyles({
   root: {
     display: "flex",
     alignItems: "center",
@@ -16,14 +14,9 @@ const useHomePageStyles = makeStyles<Theme>((theme) => ({
 
     backgroundColor: "transparent",
   },
-  userName: {
-    fontSize: 20,
-    color: theme.textColor,
-    fontWeight: theme.fontWeight.semiBold,
-  },
   userImage: {
     borderRadius: "50%",
   },
-}));
+});
 
 export default useHomePageStyles;
