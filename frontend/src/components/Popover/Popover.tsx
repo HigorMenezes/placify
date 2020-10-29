@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 
 import PopoverContainer from "./PopoverContainer";
 
+import useWindowResize from "../../hooks/useWindowResize";
+
 import usePopoverStyles from "./usePopoverStyles";
 
 interface Position {
@@ -47,7 +49,10 @@ function Popover({
 }: PopoverProps): React.ReactElement | null {
   const [position, setPosition] = useState<Position>({ left: 0, top: 0 });
   const popoverContent = useRef<HTMLDivElement | null>(null);
+  const { width, height } = useWindowResize();
   const classes = usePopoverStyles({ left: position.left, top: position.top });
+
+  console.log("Change");
 
   useEffect(() => {
     if (anchorEl && popoverContent.current) {
@@ -78,7 +83,7 @@ function Popover({
 
       setPosition({ left, top });
     }
-  }, [anchorEl, anchorOrigin, transformOrigin, offset]);
+  }, [anchorEl, anchorOrigin, transformOrigin, offset, width, height]);
 
   function handleClickOutside(e: React.MouseEvent) {
     if (e.target === e.currentTarget) {
