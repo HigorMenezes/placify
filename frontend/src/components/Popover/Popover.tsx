@@ -52,8 +52,6 @@ function Popover({
   const { width, height } = useWindowResize();
   const classes = usePopoverStyles({ left: position.left, top: position.top });
 
-  console.log("Change");
-
   useEffect(() => {
     if (anchorEl && popoverContent.current) {
       const {
