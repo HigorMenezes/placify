@@ -4,22 +4,14 @@ import cookieParser from "cookie-parser";
 import logger from "./utils/logger";
 import { appEnvironment } from "./configs/environment";
 
-import validateCredentialMiddleware from "./middlewares/validateCredentialMiddleware";
-import sessionRoutes from "./routes/sessionRoutes";
-import userRoutes from "./routes/userRoutes";
-import albumRoutes from "./routes/albumRoutes";
-import playlistRoutes from "./routes/playlistRoutes";
+import routes from "./routes";
 
 const app = express();
 app.use(cors({ origin: appEnvironment.appClientUrl, credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(sessionRoutes);
-app.use(validateCredentialMiddleware);
-app.use(userRoutes);
-app.use(albumRoutes);
-app.use(playlistRoutes);
+app.use(routes);
 
 app.get("/test", (request, response) => {
   response.json({ test: "OK" });
