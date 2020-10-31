@@ -23,4 +23,4 @@ function Sidebar(): React.ReactElement {
   );
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);
