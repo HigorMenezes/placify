@@ -52,4 +52,4 @@ function Search(): React.ReactElement {
   );
 }
 
-export default Search;
+export default React.memo(Search);
