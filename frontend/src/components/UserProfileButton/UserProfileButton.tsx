@@ -11,6 +11,7 @@ import useUserProfileButtonStyles from "./useUserProfileButtonStyles";
 import { Profile } from "../../types";
 
 function UserProfileButton(): React.ReactElement {
+  console.log("UserProfileButton");
   const classes = useUserProfileButtonStyles();
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null,
@@ -58,4 +59,4 @@ function UserProfileButton(): React.ReactElement {
   );
 }
 
-export default UserProfileButton;
+export default React.memo(UserProfileButton);
