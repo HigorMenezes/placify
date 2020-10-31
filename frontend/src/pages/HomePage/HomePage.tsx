@@ -4,15 +4,13 @@ import UserProfileButton from "../../components/UserProfileButton";
 import NewAlbumsList from "../../components/NewAlbumsList";
 import FeaturedPlaylistsList from "../../components/FeaturedPlaylistsList";
 
-import MainLayout from "../../layouts/MainLayout";
-
 import useHomePageStyles from "./useHomePageStyles";
 
 function HomePage(): React.ReactElement {
   const classes = useHomePageStyles();
 
   return (
-    <MainLayout>
+    <>
       <div className={classes.headerContainer}>
         <UserProfileButton />
       </div>
@@ -24,7 +22,7 @@ function HomePage(): React.ReactElement {
         <h2 className={classes.title}>Featured Playlists</h2>
         <FeaturedPlaylistsList />
       </div>
-    </MainLayout>
+    </>
   );
 }
 
