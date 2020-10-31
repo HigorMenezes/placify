@@ -7,7 +7,11 @@ const useAlbumPageStyles = makeStyles({
     margin: "15px 0px",
 
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
+
+    "& > *:not(:last-child)": {
+      marginRight: 25,
+    },
   },
   sectionContent: {
     width: "100%",

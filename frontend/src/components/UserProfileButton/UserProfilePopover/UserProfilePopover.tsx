@@ -24,15 +24,14 @@ function UserProfilePopover({
       anchorEl={anchorEl}
       anchorOrigin={{
         horizontal: "right",
-        vertical: "top",
+        vertical: "bottom",
       }}
       transformOrigin={{
         horizontal: "right",
         vertical: "top",
       }}
       offset={{
-        x: 2,
-        y: -2,
+        y: 2,
       }}
       onClose={onClose}
     >
