@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import PlacifyLogo from "../PlacifyLogo";
 import PlacifyTitle from "../PlacifyTitle";
@@ -11,10 +12,10 @@ function Sidebar(): React.ReactElement {
 
   return (
     <div className={classes.root}>
-      <div className={classes.logoContainer}>
+      <Link className={classes.logoContainer} to="/placify">
         <PlacifyLogo />
         <PlacifyTitle />
-      </div>
+      </Link>
       <div className={classes.navigationContainer}>
         <Navigation />
       </div>
