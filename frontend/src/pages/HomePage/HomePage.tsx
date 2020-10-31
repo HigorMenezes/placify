@@ -1,5 +1,7 @@
 import React from "react";
 
+import placifyApi from "../../services/placifyApi";
+
 import UserProfileButton from "../../components/UserProfileButton";
 import NewAlbumsList from "../../components/NewAlbumsList";
 import FeaturedPlaylistsList from "../../components/FeaturedPlaylistsList";

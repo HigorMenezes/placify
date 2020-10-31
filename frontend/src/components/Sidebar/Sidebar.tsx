@@ -2,6 +2,7 @@ import React from "react";
 
 import PlacifyLogo from "../PlacifyLogo";
 import PlacifyTitle from "../PlacifyTitle";
+import Navigation from "../Navigation";
 
 import useSidebarStyles from "./useSidebarStyles";
 
@@ -14,7 +15,9 @@ function Sidebar(): React.ReactElement {
         <PlacifyLogo />
         <PlacifyTitle />
       </div>
-      <nav className={classes.navigationContainer}>navigation</nav>
+      <div className={classes.navigationContainer}>
+        <Navigation />
+      </div>
     </div>
   );
 }
