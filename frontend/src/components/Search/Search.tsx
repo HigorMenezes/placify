@@ -17,7 +17,7 @@ function Search(): React.ReactElement {
     if (qParam) {
       setSearchInput(qParam);
     }
-  }, []);
+  }, [location.search]);
 
   function handleChangeSearch(event: React.ChangeEvent<HTMLInputElement>) {
     const newSearchValue = event.target.value;
