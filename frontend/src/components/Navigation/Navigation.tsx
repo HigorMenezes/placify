@@ -8,7 +8,11 @@ function Navigation(): React.ReactElement {
 
   return (
     <nav className={classes.root}>
-      <Link to="/placify/albums">Albums</Link>
+      <Link to="/placify/albums">
+        <div className={classes.navigationButtonContainer}>
+          <p className={classes.navigationButtonText}>Albums</p>
+        </div>
+      </Link>
     </nav>
   );
 }

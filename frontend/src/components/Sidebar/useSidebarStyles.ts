@@ -17,7 +17,10 @@ const useSideBarStyles = makeStyles({
       marginRight: 15,
     },
   },
-  navigationContainer: {},
+  navigationContainer: {
+    padding: "15px 5px",
+    width: "100%",
+  },
 });
 
 export default useSideBarStyles;
