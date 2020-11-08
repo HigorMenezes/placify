@@ -17,6 +17,13 @@ const useAlbumPageStyles = makeStyles({
     width: "100%",
     margin: "15px 0",
   },
+  albumsContainer: {
+    display: "grid",
+    gridTemplateColumns: "repeat(5, 1fr)",
+    columnGap: "15px",
+    rowGap: "15px",
+  },
+  emptyResult: {},
 });
 
 export default useAlbumPageStyles;
