@@ -31,12 +31,10 @@ function Search({ placeholder }: SearchProps): React.ReactElement {
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (searchInput) {
-      const searchParams = new URLSearchParams();
-      searchParams.append("q", searchInput);
+    const searchParams = new URLSearchParams();
+    searchParams.append("q", searchInput ?? "");
 
-      history.push({ search: `?${searchParams.toString()}` });
-    }
+    history.push({ search: `?${searchParams.toString()}` });
   }
 
   return (
