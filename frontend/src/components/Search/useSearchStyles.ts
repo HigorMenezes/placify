@@ -48,6 +48,10 @@ const useSearchStyles = makeStyles<Theme>((theme) => ({
       backgroundColor: "rgba(0,0,0,.07)",
       color: theme.textColor,
     },
+
+    "&:hover": {
+      cursor: "pointer",
+    },
   },
   searchIcon: {
     color: "inherit",
