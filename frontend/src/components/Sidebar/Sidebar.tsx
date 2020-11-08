@@ -16,6 +16,7 @@ function Sidebar(): React.ReactElement {
         <PlacifyLogo />
         <PlacifyTitle />
       </Link>
+      <hr className={classes.divider} />
       <div className={classes.navigationContainer}>
         <Navigation />
       </div>

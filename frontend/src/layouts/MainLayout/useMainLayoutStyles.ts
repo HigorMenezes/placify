@@ -15,6 +15,8 @@ const useMainLayoutStyles = makeStyles<Theme>((theme) => ({
     width: 350,
     height: "100%",
     padding: 15,
+
+    backgroundColor: "rgba(0,0,0,.05)",
   },
   mainContainer: {
     width: "100%",
