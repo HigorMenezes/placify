@@ -36,7 +36,7 @@ function AlbumPage(): React.ReactElement {
   return (
     <>
       <div className={classes.headerContainer}>
-        <Search />
+        <Search placeholder="Search for albums" />
         <UserProfileButton />
       </div>
       <div className={classes.sectionContent}>

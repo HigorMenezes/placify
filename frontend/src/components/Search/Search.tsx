@@ -4,7 +4,11 @@ import { FaSearch } from "react-icons/fa";
 
 import useSearchStyles from "./useSearchStyles";
 
-function Search(): React.ReactElement {
+interface SearchProps {
+  placeholder?: string;
+}
+
+function Search({ placeholder }: SearchProps): React.ReactElement {
   const classes = useSearchStyles();
   const history = useHistory();
   const location = useLocation();
@@ -43,6 +47,7 @@ function Search(): React.ReactElement {
           name="search"
           value={searchInput}
           onChange={handleChangeSearch}
+          placeholder={placeholder}
         />
         <button className={classes.searchButton} type="submit">
           <FaSearch size={25} />
@@ -51,5 +56,9 @@ function Search(): React.ReactElement {
     </form>
   );
 }
+
+Search.defaultProps = {
+  placeholder: "",
+};
 
 export default React.memo(Search);
