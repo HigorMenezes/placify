@@ -9,7 +9,6 @@ const useAlbumCardStyles = makeStyles<Theme>((theme) => ({
   },
   cardName: {
     margin: "0 5px",
-    marginTop: 5,
     fontSize: 16,
     fontWeight: theme.fontWeight.semiBold,
     lineHeight: 1,

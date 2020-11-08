@@ -22,7 +22,7 @@ function AlbumPage(): React.ReactElement {
     if (q) {
       placifyApi
         .get("/search/albums", {
-          params: { limit: 50, q },
+          params: { limit: 20, q },
         })
         .then(({ data }) => {
           setSearch(data);
@@ -39,7 +39,7 @@ function AlbumPage(): React.ReactElement {
         <UserProfileButton />
       </div>
       <div className={classes.sectionContent}>
-        <h2>Albums</h2>
+        <h2 className={classes.title}>Albums</h2>
         {albumSearch ? (
           <div className={classes.albumsContainer}>
             {albumSearch.albums.map((album) => (
