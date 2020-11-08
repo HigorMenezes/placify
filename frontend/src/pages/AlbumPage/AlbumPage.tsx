@@ -3,13 +3,14 @@ import { useLocation } from "react-router-dom";
 
 import UserProfileButton from "../../components/UserProfileButton";
 import Search from "../../components/Search";
+import AlbumCard from "../../components/AlbumCard";
+import EmptySearch from "../../components/EmptySearch";
 
 import useAlbumPageStyles from "./useAlbumPageStyles";
 
 import placifyApi from "../../services/placifyApi";
 
 import { NewAlbums } from "../../types";
-import AlbumCard from "../../components/AlbumCard";
 
 function AlbumPage(): React.ReactElement {
   const classes = useAlbumPageStyles();
@@ -47,7 +48,9 @@ function AlbumPage(): React.ReactElement {
             ))}
           </div>
         ) : (
-          <div className={classes.emptyResult}>Empty</div>
+          <div className={classes.emptyResult}>
+            <EmptySearch text="Search for albums" />
+          </div>
         )}
       </div>
     </>
