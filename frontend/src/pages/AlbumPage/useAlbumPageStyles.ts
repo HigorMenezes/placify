@@ -32,6 +32,27 @@ const useAlbumPageStyles = makeStyles<Theme>((theme) => ({
     rowGap: "25px",
   },
   emptyResult: {},
+  fetchMoreContainer: {
+    margin: "20px 0px",
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  fetchMoreButton: {
+    padding: "5px 20px",
+    height: 40,
+    borderRadius: 5,
+    border: "none",
+    cursor: "pointer",
+    background: theme.PrimaryColor.gradient,
+
+    color: theme.PrimaryColor.contrastColor,
+    fontWeight: theme.fontWeight.semiBold,
+    fontSize: 16,
+
+    "&:hover": {
+      filter: "brightness(1.1)",
+    },
+  },
 }));
 
 export default useAlbumPageStyles;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 
 import UserProfileButton from "../../components/UserProfileButton";
@@ -12,24 +12,51 @@ import placifyApi from "../../services/placifyApi";
 
 import { NewAlbums } from "../../types";
 
+const LIMIT = 8;
+
 function AlbumPage(): React.ReactElement {
   const classes = useAlbumPageStyles();
   const location = useLocation();
-  const [albumSearch, setSearch] = useState<NewAlbums | null>(null);
+  const [albumSearch, setAlbumSearch] = useState<NewAlbums | null>(null);
+  const offset = useRef<number>(0);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
-    const q = searchParams.get("q");
-    if (q) {
+    const qParam = searchParams.get("q");
+    if (qParam) {
       placifyApi
         .get("/search/albums", {
-          params: { limit: 20, q },
+          params: { limit: LIMIT, q: qParam },
         })
         .then(({ data }) => {
-          setSearch(data);
+          offset.current += LIMIT;
+          setAlbumSearch(data);
         });
     } else {
-      setSearch(null);
+      setAlbumSearch(null);
+    }
+  }, [location]);
+
+  const handleFetchMore = useCallback(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const qParam = searchParams.get("q");
+    if (qParam) {
+      placifyApi
+        .get("/search/albums", {
+          params: { limit: LIMIT, offset: offset.current, q: qParam },
+        })
+        .then(({ data }) => {
+          offset.current += LIMIT;
+          setAlbumSearch((prevAlbumSearch) => {
+            return {
+              ...data,
+              albums: [
+                ...(prevAlbumSearch?.albums ?? []),
+                ...(data?.albums ?? []),
+              ],
+            };
+          });
+        });
     }
   }, [location]);
 
@@ -52,6 +79,15 @@ function AlbumPage(): React.ReactElement {
             <EmptySearch text="Search for albums" />
           </div>
         )}
+      </div>
+      <div className={classes.fetchMoreContainer}>
+        <button
+          className={classes.fetchMoreButton}
+          type="button"
+          onClick={handleFetchMore}
+        >
+          Fetch more albums
+        </button>
       </div>
     </>
   );
