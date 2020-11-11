@@ -10,7 +10,7 @@ import { FeaturedPlaylists } from "../../types";
 
 function FeaturedPlaylistsList(): React.ReactElement {
   const classes = useFeaturedPlaylistsListStyles();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const [featuredPlaylists, setFeaturedPlaylists] = useState<
     FeaturedPlaylists
