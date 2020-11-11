@@ -11,6 +11,7 @@ import useAlbumPageStyles from "./useAlbumPageStyles";
 import placifyApi from "../../services/placifyApi";
 
 import { NewAlbums } from "../../types";
+import Loader from "../../components/Loader";
 
 const LIMIT = 8;
 
@@ -18,12 +19,14 @@ function AlbumPage(): React.ReactElement {
   const classes = useAlbumPageStyles();
   const location = useLocation();
   const [albumSearch, setAlbumSearch] = useState<NewAlbums | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const offset = useRef<number>(0);
 
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const qParam = searchParams.get("q");
     if (qParam) {
+      setLoading(true);
       placifyApi
         .get("/search/albums", {
           params: { limit: LIMIT, q: qParam },
@@ -31,6 +34,9 @@ function AlbumPage(): React.ReactElement {
         .then(({ data }) => {
           offset.current += LIMIT;
           setAlbumSearch(data);
+        })
+        .finally(() => {
+          setLoading(false);
         });
     } else {
       setAlbumSearch(null);
@@ -41,6 +47,7 @@ function AlbumPage(): React.ReactElement {
     const searchParams = new URLSearchParams(location.search);
     const qParam = searchParams.get("q");
     if (qParam) {
+      setLoading(true);
       placifyApi
         .get("/search/albums", {
           params: { limit: LIMIT, offset: offset.current, q: qParam },
@@ -56,6 +63,9 @@ function AlbumPage(): React.ReactElement {
               ],
             };
           });
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   }, [location]);
@@ -74,21 +84,26 @@ function AlbumPage(): React.ReactElement {
               <AlbumCard album={album} />
             ))}
           </div>
-        ) : (
+        ) : null}
+        {!albumSearch && !loading ? (
           <div className={classes.emptyResult}>
             <EmptySearch text="Search for albums" />
           </div>
-        )}
+        ) : null}
       </div>
-      <div className={classes.fetchMoreContainer}>
-        <button
-          className={classes.fetchMoreButton}
-          type="button"
-          onClick={handleFetchMore}
-        >
-          Fetch more albums
-        </button>
-      </div>
+      {loading ? <Loader /> : null}
+      {albumSearch?.next && !loading ? (
+        <div className={classes.fetchMoreContainer}>
+          <button
+            className={classes.fetchMoreButton}
+            type="button"
+            onClick={handleFetchMore}
+            disabled={loading}
+          >
+            Fetch more albums
+          </button>
+        </div>
+      ) : null}
     </>
   );
 }

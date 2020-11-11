@@ -7,10 +7,12 @@ function Loader(): React.ReactElement {
 
   return (
     <div className={classes.root}>
-      <div />
-      <div />
-      <div />
-      <div />
+      <div className={classes.loader}>
+        <div />
+        <div />
+        <div />
+        <div />
+      </div>
     </div>
   );
 }
