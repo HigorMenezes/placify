@@ -5,13 +5,13 @@ import UserProfileButton from "../../components/UserProfileButton";
 import Search from "../../components/Search";
 import AlbumCard from "../../components/AlbumCard";
 import EmptySearch from "../../components/EmptySearch";
+import Loader from "../../components/Loader";
 
 import useAlbumPageStyles from "./useAlbumPageStyles";
 
 import placifyApi from "../../services/placifyApi";
 
 import { NewAlbums } from "../../types";
-import Loader from "../../components/Loader";
 
 const LIMIT = 8;
 

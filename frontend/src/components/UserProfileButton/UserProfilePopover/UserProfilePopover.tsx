@@ -9,7 +9,7 @@ import { Profile } from "../../../types";
 interface UserProfilePopoverProps {
   anchorEl: HTMLButtonElement | null;
   onClose: () => void;
-  userProfile: Profile;
+  userProfile?: Profile;
 }
 
 function UserProfilePopover({
@@ -36,15 +36,21 @@ function UserProfilePopover({
       onClose={onClose}
     >
       <div className={classes.root}>
-        <p className={classes.name}>{userProfile.name}</p>
-        <small className={classes.email}>{userProfile.email}</small>
+        <p className={classes.name}>{userProfile?.name ?? ""}</p>
+        <small className={classes.email}>{userProfile?.email ?? ""}</small>
         <div className={classes.followersContainer}>
-          <p className={classes.followersQuantity}>{userProfile.followers}</p>
+          <p className={classes.followersQuantity}>
+            {userProfile?.followers ?? 0}
+          </p>
           <FaHeart className={classes.followersIcon} size={20} />
         </div>
       </div>
     </Popover>
   );
 }
+
+UserProfilePopover.defaultProps = {
+  userProfile: null,
+};
 
 export default UserProfilePopover;

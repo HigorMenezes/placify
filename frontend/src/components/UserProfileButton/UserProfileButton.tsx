@@ -27,10 +27,6 @@ function UserProfileButton(): React.ReactElement {
     setAnchorEl(null);
   }
 
-  if (!userProfile) {
-    return <p>Loading...</p>;
-  }
-
   return (
     <>
       <button
@@ -42,7 +38,7 @@ function UserProfileButton(): React.ReactElement {
       >
         <img
           className={classes.userImage}
-          src={userProfile.images?.[0]?.url ?? userAlt}
+          src={userProfile?.images?.[0]?.url ?? userAlt}
           width={30}
           height={30}
           alt="user profile"
