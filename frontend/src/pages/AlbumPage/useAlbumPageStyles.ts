@@ -43,7 +43,7 @@ const useAlbumPageStyles = makeStyles<Theme>((theme) => ({
     borderRadius: 5,
     border: "none",
     cursor: "pointer",
-    background: theme.PrimaryColor.gradient,
+    backgroundColor: theme.PrimaryColor.backgroundColor,
 
     color: theme.PrimaryColor.contrastColor,
     fontWeight: theme.fontWeight.semiBold,
