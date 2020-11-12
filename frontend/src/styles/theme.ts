@@ -16,7 +16,7 @@ export interface Theme {
 }
 
 const theme: Theme = {
-  backgroundColor: "#FEFEFE",
+  backgroundColor: "#eeeeee",
   PrimaryColor: {
     backgroundColor: "#8d2ec9",
     gradient:
