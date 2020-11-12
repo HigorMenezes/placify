@@ -84,9 +84,7 @@ function AlbumPage(): React.ReactElement {
           </div>
         ) : null}
         {!albumSearch && !loading ? (
-          <div className={classes.emptyResult}>
-            <EmptySearch text="Search for albums" />
-          </div>
+          <EmptySearch text="Search for albums" />
         ) : null}
       </div>
       {loading ? <Loader /> : null}
