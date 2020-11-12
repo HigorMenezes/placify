@@ -19,7 +19,6 @@ const useAlbumPageStyles = makeStyles<Theme>((theme) => ({
     columnGap: "15px",
     rowGap: "25px",
   },
-  emptyResult: {},
 }));
 
 export default useAlbumPageStyles;
