@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from "react";
 import { useLocation } from "react-router-dom";
 
-import UserProfileButton from "../../components/UserProfileButton";
-import Search from "../../components/Search";
 import AlbumCard from "../../components/AlbumCard";
 import EmptySearch from "../../components/EmptySearch";
 import Loader from "../../components/Loader";
+
+import Header from "./Header";
 
 import useAlbumPageStyles from "./useAlbumPageStyles";
 
@@ -72,10 +72,7 @@ function AlbumPage(): React.ReactElement {
 
   return (
     <>
-      <div className={classes.headerContainer}>
-        <Search placeholder="Search for albums" />
-        <UserProfileButton />
-      </div>
+      <Header />
       <div className={classes.sectionContent}>
         <h2 className={classes.title}>Albums</h2>
         {albumSearch ? (
