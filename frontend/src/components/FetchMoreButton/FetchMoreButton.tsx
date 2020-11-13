@@ -1,13 +1,15 @@
 import React from "react";
 
-import useFetchMoreStyles from "./useFetchMoreStyles";
+import useFetchMoreButtonStyles from "./useFetchMoreButtonStyles";
 
-interface FetchMoreProps {
+interface FetchMoreButtonProps {
   onFetchMore: () => void;
 }
 
-function FetchMore({ onFetchMore }: FetchMoreProps): React.ReactElement {
-  const classes = useFetchMoreStyles();
+function FetchMoreButton({
+  onFetchMore,
+}: FetchMoreButtonProps): React.ReactElement {
+  const classes = useFetchMoreButtonStyles();
 
   return (
     <div className={classes.root}>
@@ -22,4 +24,4 @@ function FetchMore({ onFetchMore }: FetchMoreProps): React.ReactElement {
   );
 }
 
-export default FetchMore;
+export default FetchMoreButton;

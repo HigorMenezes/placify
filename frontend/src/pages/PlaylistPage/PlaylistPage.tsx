@@ -6,7 +6,7 @@ import EmptySearch from "../../components/EmptySearch";
 import Loader from "../../components/Loader";
 
 import SearchHeader from "../../components/SearchHeader";
-import FetchMore from "./FetchMore";
+import FetchMoreButton from "../../components/FetchMoreButton";
 
 import usePlaylistPageStyles from "./usePlaylistPageStyles";
 
@@ -92,7 +92,7 @@ function PlaylistPage(): React.ReactElement {
       </div>
       {loading ? <Loader /> : null}
       {playlistSearch?.next && !loading ? (
-        <FetchMore onFetchMore={handleFetchMore} />
+        <FetchMoreButton onFetchMore={handleFetchMore} />
       ) : null}
     </>
   );

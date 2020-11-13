@@ -6,7 +6,7 @@ import EmptySearch from "../../components/EmptySearch";
 import Loader from "../../components/Loader";
 
 import SearchHeader from "../../components/SearchHeader";
-import FetchMore from "./FetchMore";
+import FetchMoreButton from "../../components/FetchMoreButton";
 
 import useAlbumPageStyles from "./useAlbumPageStyles";
 
@@ -89,7 +89,7 @@ function AlbumPage(): React.ReactElement {
       </div>
       {loading ? <Loader /> : null}
       {albumSearch?.next && !loading ? (
-        <FetchMore onFetchMore={handleFetchMore} />
+        <FetchMoreButton onFetchMore={handleFetchMore} />
       ) : null}
     </>
   );

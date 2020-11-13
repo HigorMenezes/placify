@@ -1,8 +1,8 @@
 import { makeStyles } from "@material-ui/styles";
 
-import { Theme } from "../../../styles/theme";
+import { Theme } from "../../styles/theme";
 
-const useAlbumPageStyles = makeStyles<Theme>((theme) => ({
+const useFetchMoreButtonStyles = makeStyles<Theme>((theme) => ({
   root: {
     margin: "20px 0px",
     display: "flex",
@@ -26,4 +26,4 @@ const useAlbumPageStyles = makeStyles<Theme>((theme) => ({
   },
 }));
 
-export default useAlbumPageStyles;
+export default useFetchMoreButtonStyles;
