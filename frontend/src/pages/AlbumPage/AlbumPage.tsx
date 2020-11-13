@@ -5,7 +5,7 @@ import AlbumCard from "../../components/AlbumCard";
 import EmptySearch from "../../components/EmptySearch";
 import Loader from "../../components/Loader";
 
-import Header from "./Header";
+import SearchHeader from "../../components/SearchHeader";
 import FetchMore from "./FetchMore";
 
 import useAlbumPageStyles from "./useAlbumPageStyles";
@@ -73,7 +73,7 @@ function AlbumPage(): React.ReactElement {
 
   return (
     <>
-      <Header />
+      <SearchHeader placeholder="Search for albums" />
       <div className={classes.sectionContent}>
         <h2 className={classes.title}>Albums</h2>
         {albumSearch ? (

@@ -5,7 +5,7 @@ import PlaylistCard from "../../components/PlaylistCard";
 import EmptySearch from "../../components/EmptySearch";
 import Loader from "../../components/Loader";
 
-import Header from "./Header";
+import SearchHeader from "../../components/SearchHeader";
 import FetchMore from "./FetchMore";
 
 import usePlaylistPageStyles from "./usePlaylistPageStyles";
@@ -76,7 +76,7 @@ function PlaylistPage(): React.ReactElement {
 
   return (
     <>
-      <Header />
+      <SearchHeader placeholder="Search for playlists" />
       <div className={classes.sectionContent}>
         <h2 className={classes.title}>Playlists</h2>
         {playlistSearch ? (

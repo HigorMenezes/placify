@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/styles";
 
-const useAlbumPageStyles = makeStyles({
+const useSearchHeaderStyles = makeStyles({
   root: {
     width: "100%",
     height: 50,
@@ -15,4 +15,4 @@ const useAlbumPageStyles = makeStyles({
   },
 });
 
-export default useAlbumPageStyles;
+export default useSearchHeaderStyles;
