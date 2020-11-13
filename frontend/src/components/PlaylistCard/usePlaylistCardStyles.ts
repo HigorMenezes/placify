@@ -8,7 +8,7 @@ const usePlaylistCardStyles = makeStyles<Theme>((theme) => ({
     borderRadius: 15,
   },
   cardName: {
-    margin: "0 5px",
+    margin: "0 10px",
     fontSize: 16,
     fontWeight: theme.fontWeight.semiBold,
     lineHeight: 1,
