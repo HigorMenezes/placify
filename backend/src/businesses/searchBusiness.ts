@@ -14,11 +14,12 @@ interface SearchAlbums {
 const searchBusiness = {
   async searchAlbums({ token, q, limit, offset }: SearchAlbums) {
     logger.debug("[searchBusiness.searchAlbums]");
-    const searchAlbums = await searchRepository.searchAlbums({
+    const searchAlbums = await searchRepository.search({
       token,
       q,
       limit: limit ? Number(limit) : 5,
       offset: offset ? Number(offset) : 0,
+      type: "album",
     });
 
     const sanitizedSearchAlbums = {

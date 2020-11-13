@@ -1,30 +1,31 @@
 import logger from "../utils/logger";
 import { spotifyApi } from "../configs/spotifyApi";
 
-interface SearchAlbums {
+interface Search {
   token: string;
   q: string;
   limit: number;
   offset: number;
+  type: string;
 }
 
 const searchRepository = {
-  async searchAlbums({ token, q, limit, offset }: SearchAlbums) {
-    logger.debug("[searchRepository.searchAlbums]");
+  async search({ token, q, limit, offset, type }: Search) {
+    logger.debug("[searchRepository.search]");
 
     const params = new URLSearchParams();
 
     params.append("q", q);
     params.append("limit", String(limit));
     params.append("offset", String(offset));
-    params.append("type", "album");
+    params.append("type", type);
 
-    const { data: albums } = await spotifyApi.get("/search", {
+    const { data: searchResult } = await spotifyApi.get("/search", {
       params,
       headers: { Authorization: `Bearer ${token}` },
     });
 
-    return albums;
+    return searchResult;
   },
 };
 
