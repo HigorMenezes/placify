@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-type Func = (...params: any[]) => void;
+type Func = (...params: unknown[]) => void;
 
 function useDebounce(): (func: Func, timeout: number) => Func {
   // eslint-disable-next-line no-undef
