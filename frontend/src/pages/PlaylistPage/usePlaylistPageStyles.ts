@@ -13,7 +13,7 @@ const usePlaylistPageStyles = makeStyles<Theme>((theme) => ({
     width: "100%",
     margin: "15px 0",
   },
-  albumsContainer: {
+  playlistsContainer: {
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
     columnGap: "15px",
