@@ -13,6 +13,11 @@ function Navigation(): React.ReactElement {
           <p className={classes.navigationButtonText}>Albums</p>
         </div>
       </Link>
+      <Link to="/placify/playlists">
+        <div className={classes.navigationButtonContainer}>
+          <p className={classes.navigationButtonText}>Playlists</p>
+        </div>
+      </Link>
     </nav>
   );
 }

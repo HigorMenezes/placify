@@ -6,6 +6,7 @@ import MainLayout from "./layouts/MainLayout";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import AlbumPage from "./pages/AlbumPage";
+import PlaylistPage from "./pages/PlaylistPage";
 
 function Routes(): React.ReactElement {
   return (
@@ -15,6 +16,7 @@ function Routes(): React.ReactElement {
         <MainLayout>
           <Route path="/placify" exact component={HomePage} />
           <Route path="/placify/albums" component={AlbumPage} />
+          <Route path="/placify/playlists" component={PlaylistPage} />
         </MainLayout>
       </Switch>
     </BrowserRouter>
